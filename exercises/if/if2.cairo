@@ -42,3 +42,5 @@ mod tests {
         assert(foo_if_fizz('literally anything') == 'baz', 'anything else returns baz');
     }
 }
+
+

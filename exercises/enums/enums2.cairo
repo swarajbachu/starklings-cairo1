@@ -8,7 +8,11 @@ use array::ArrayTrait;
 use traits::Into;
 
 #[derive(Copy, Drop)]
-enum Message { // TODO: define the different variants used below
+enum Message {
+    Quit,
+    Echo: felt252,
+    Move: (u8, u8),
+    ChangeColor: (felt252, felt252, felt252)
 }
 
 

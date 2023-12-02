@@ -1,3 +1,5 @@
+use core::traits::Destruct;
+use core::clone::Clone;
 // enums3.cairo
 // Address all the TODOs to make the tests pass!
 // Execute `starklings hint enums3` or use the `hint` watch subcommand for a hint.
@@ -8,6 +10,10 @@ use debug::PrintTrait;
 
 #[derive(Drop, Copy)]
 enum Message { // TODO: implement the message variant types based on their usage below
+    ChangeColor: (u8, u8, u8),
+    Echo: felt252,
+    Move: Point,
+    Quit,
 }
 
 #[derive(Drop, Copy)]
@@ -52,6 +58,7 @@ impl StateImpl of StateTrait {
     fn process(
         ref self: State, message: Message
     ) { // TODO: create a match expression to process the different message variants
+       
     }
 }
 

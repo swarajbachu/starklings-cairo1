@@ -13,7 +13,7 @@ fn pow(x:usize, mut y:usize) -> usize {
     }
     return x * pow(x,y);
 }
-
+ 
 use debug::PrintTrait;
 
 fn poly(x: usize, y: usize) -> usize {
