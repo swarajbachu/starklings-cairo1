@@ -2,34 +2,35 @@
 // Execute `starklings hint enums2` or use the `hint` watch subcommand for a hint.
 
 
-use debug::PrintTrait;
-use array::ArrayTrait;
-use traits::Into;
+// use debug::PrintTrait;
+// use array::ArrayTrait;
+// use traits::Into;
 
-#[derive(Copy, Drop)]
-enum Message {
-    Quit,
-    Echo: felt252,
-    Move: (u8, u8),
-    ChangeColor: (felt252, felt252, felt252)
-}
+// #[derive(Copy, Drop)]
+// enum Message {
+//     Quit,
+//     Echo: felt252,
+//     Move: (u8, u8),
+//     ChangeColor: (felt252, felt252, felt252)
+// }
 
 
 fn main() {
-    // let mut messages: Array<Message> = ArrayTrait::new();
-    // messages.append(Message::Quit);
-    // messages.append(Message::Echo('hello world'));
-    // messages.append(Message::Move((10, 30)));
-    // messages.append(Message::ChangeColor((0, 255, 255)));
+//     let mut messages: Array<Message> = ArrayTrait::new();
+//     messages.append(Message::Quit);
+//     messages.append(Message::Echo('hello world'));
+//     messages.append(Message::Move((10, 30)));
+//     messages.append(Message::ChangeColor((0, 255, 255)));
 
-    // print_messages_recursive(messages, 3)
+//     print_messages_recursive(messages, 3)
+// }
 }
 
 // Utility function to print messages. Don't modify these.
 
-trait MessageTrait<T> {
-    fn call(self: T);
-}
+// trait MessageTrait<T> {
+//     fn call(self: T);
+// }
 
 // impl MessageImpl of MessageTrait<Message> {
 //     fn call(self: Message) {
@@ -42,7 +43,7 @@ trait MessageTrait<T> {
 //         Option::Some(_) => {},
 //         Option::None => {
 //             let mut data = ArrayTrait::<felt252>::new();
-//             data.append('OOG');
+//             // data.append('OOG');
 //             panic(data);
 //         },
 //     }
