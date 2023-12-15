@@ -4,7 +4,6 @@ use core::clone::Clone;
 // Address all the TODOs to make the tests pass!
 // Execute `starklings hint enums3` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
 
 use debug::PrintTrait;
 
@@ -58,6 +57,13 @@ impl StateImpl of StateTrait {
     fn process(
         ref self: State, message: Message
     ) { // TODO: create a match expression to process the different message variants
+
+        match message {
+            Message::ChangeColor(color) => self.change_color(color),
+            Message::Echo(echo) => self.echo(echo),
+            Message::Move(move) => self.move_position(move),
+            Message::Quit => self.quit(),
+        }
        
     }
 }
