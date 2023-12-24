@@ -1,17 +1,19 @@
-use std::{env::current_dir, fs, path::PathBuf};
-
 use anyhow::Context;
 use cairo_lang_runner::{RunResultValue, SierraCasmRunner, StarknetState};
 use cairo_lang_sierra::program::VersionedProgram;
 use cairo_lang_test_plugin::TestCompilation;
 use cairo_lang_test_runner::{CompiledTestRunner, TestRunConfig};
 use camino::Utf8PathBuf;
+use console::style;
+use std::{env::current_dir, fs, path::PathBuf};
 
 use itertools::Itertools;
 use scarb::{
     core::{Config, TargetKind},
     ops::{self, collect_metadata, CompileOpts, MetadataOptions},
 };
+
+const AVAILABLE_GAS: usize = 999999999;
 
 // Prepares testing crate
 // Copies the exercise file into testing crate
@@ -51,6 +53,12 @@ pub fn scarb_run(file_path: &PathBuf) -> anyhow::Result<String> {
 
     // Compile before running tests, with test targets true
     compile(&config, false)?;
+
+    println!(
+        "   {} {}\n",
+        style("Running").green().bold(),
+        file_path.to_str().unwrap()
+    );
 
     let metadata = collect_metadata(
         &MetadataOptions {
@@ -98,13 +106,17 @@ pub fn scarb_run(file_path: &PathBuf) -> anyhow::Result<String> {
             .into_v1()
             .with_context(|| format!("failed to load Sierra program: {file_path}"))?;
 
-            let runner = SierraCasmRunner::new(sierra_program.program, None, Default::default())?;
+            let runner = SierraCasmRunner::new(
+                sierra_program.program,
+                Some(Default::default()),
+                Default::default(),
+            )?;
 
             let result = runner
                 .run_function_with_starknet_context(
                     runner.find_function("::main")?,
                     &[],
-                    None,
+                    Some(AVAILABLE_GAS),
                     StarknetState::default(),
                 )
                 .context("failed to run the function")?;
