@@ -1,7 +1,6 @@
 // move_semantics1.cairo
 // Execute `starklings hint move_semantics1` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
 
 use array::ArrayTrait;
 use array::ArrayTCloneImpl;
@@ -15,7 +14,7 @@ fn main() {
     let mut arr1 = fill_arr(arr0);
 
     // This is just a print statement for arrays.
-    // arr1.print();
+    arr1.clone().print();
 
     //TODO fix the error here without modifying this line.
     arr1.append(88);

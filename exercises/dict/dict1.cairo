@@ -1,3 +1,4 @@
+use core::dict::Felt252DictTrait;
 // dict1.cairo
 // The Felt252Dict maps a felt252 to a value of the specified type.
 // In this exercise, you will map a `felt252` key to a value of type `u32`.
@@ -8,13 +9,15 @@
 // Make me compile and pass the test!
 // Execute `starklings hint dict1` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
 
 
 fn create_dictionary() -> Felt252Dict<u32> {
     let mut dict: Felt252Dict<u32> = Default::default();
     //TODO
-
+    dict.insert('A', 1);
+    dict.insert('B', 2);
+    dict.insert('bob', 3);
+    dict
 }
 
 

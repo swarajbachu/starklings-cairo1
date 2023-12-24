@@ -10,10 +10,15 @@ trait IJoesContract<TContractState> {
     fn get_owner(self: @TContractState) -> felt252;
 }
 
+
+
 #[starknet::contract]
 mod JoesContract {
+    use starknet1::starknet1::IJoesContract;
     #[storage]
-    struct Storage {}
+    struct Storage {
+        owner: felt252,
+    }
 
     impl IJoesContractImpl of super::IJoesContract<ContractState> {
         fn get_owner(self: @ContractState) -> felt252 {
